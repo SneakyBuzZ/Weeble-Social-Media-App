@@ -4,13 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.form {
+  background: url("/gradient.png") center no-repeat;
+}
+
 @layer base {
   * {
     @apply box-border list-none p-0 m-0 scroll-smooth;
   }
 
   body {
-    @apply bg-dark-1 text-white min-h-screen font-inter;
+    @apply min-h-screen font-inter;
   }
 }
 
@@ -24,11 +28,11 @@
   }
 
   .text-gray-light {
-    @apply text-[#989898]
+    @apply dark:text-[#747474] text-[#383838]
   }
 
   .text-gray-dark {
-    @apply text-[#616161]
+    @apply text-[#383838]
   }
 
   /* TYPOGRAPHY */
