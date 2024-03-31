@@ -61,7 +61,6 @@ function SignupForm() {
       email: values.email,
       password: values.password,
     });
-    if (session) console.log("new session ", session);
     if (!session) {
       return toast({ title: "Sign-in failed! Please try again." });
     }
@@ -71,9 +70,8 @@ function SignupForm() {
     if (isLoggedIn) {
       form.reset();
 
-      navigate("/");
+      navigate("/sign-in");
     } else {
-      console.log("isLoggedin ", isLoggedIn);
       return toast({ title: "User has not logged-in" });
     }
   }
