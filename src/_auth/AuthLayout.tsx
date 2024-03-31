@@ -8,7 +8,7 @@ function AuthLayout() {
         <Navigate to="/" />
       ) : (
         <>
-          <div className="size-full bg-[#EFEFEF] dark:bg-black flex">
+          <div className="size-full bg-[#EFEFEF] dark:bg-[#0e0610] flex">
             <section className="flex flex-1 justify-center items-center flex-col">
               <Outlet />
             </section>
