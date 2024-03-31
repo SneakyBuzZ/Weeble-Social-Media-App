@@ -12,7 +12,7 @@ function ThemeSwitcher({ children }: ThemeSwitcherProps) {
     else lightmode();
   };
   return (
-    <button className="w-full" onClick={() => themeChange()}>
+    <button className="" onClick={() => themeChange()}>
       {children}
     </button>
   );

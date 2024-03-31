@@ -6,6 +6,8 @@ import RootLayout from "./_root/RootLayout";
 import { useEffect, useState } from "react";
 import { ThemeProvider } from "./contexts/themeContext";
 
+import { Toaster } from "@/components/ui/toaster";
+
 function App() {
   const [theme, settheme] = useState("light");
 
@@ -35,6 +37,7 @@ function App() {
             <Route index element={<HomePage />} />
           </Route>
         </Routes>
+        <Toaster />
       </main>
     </ThemeProvider>
   );

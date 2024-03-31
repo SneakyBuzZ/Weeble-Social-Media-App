@@ -12,13 +12,27 @@ import { Input } from "@/components/ui/input";
 import { SignupValidation } from "@/lib/validation";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "@/components/shared/Loader";
-import { createUserAccount } from "@/lib/appwrite/api";
 import ThemeSwitcher from "@/components/shared/ThemeSwitcher";
 
+import { useToast } from "@/components/ui/use-toast";
+import {
+  useCreateUserAccountMutation,
+  useSignInAccountMutation,
+} from "@/lib/react-query/queriesAndMutations";
+import { useAuthContext } from "@/contexts/AuthContext";
+
 function SignupForm() {
-  const isLoader = false;
+  const navigate = useNavigate();
+
+  const { checkAuthUser, isLoading: isUserLoading } = useAuthContext();
+
+  const { mutateAsync: createUserAccount, isPending: isCreatingUser } =
+    useCreateUserAccountMutation();
+
+  const { mutateAsync: signInAccount, isPending: isSignInUser } =
+    useSignInAccountMutation();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
@@ -31,10 +45,36 @@ function SignupForm() {
     },
   });
 
+  const { toast } = useToast();
+
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
     const newUser = await createUserAccount(values);
-    console.log(newUser);
+    if (!newUser) {
+      return toast({
+        title: "Sign-up failed! Please try again.",
+      });
+    }
+
+    const session = await signInAccount({
+      email: values.email,
+      password: values.password,
+    });
+
+    if (!session) {
+      return toast({ title: "Sign-in failed! Please try again." });
+    }
+
+    const isLoggedIn = await checkAuthUser();
+
+    if (isLoggedIn) {
+      form.reset();
+
+      navigate("/");
+    } else {
+      console.log(isLoggedIn);
+      return toast({ title: "User has not logged-in" });
+    }
   }
 
   return (
@@ -43,7 +83,7 @@ function SignupForm() {
         <Form {...form}>
           <div className="flex-center flex-col item-center w-screen md:w-full">
             <ThemeSwitcher>
-              <h1 className="h1-kaushik w-full text-center playball-regular purple-to-pink">
+              <h1 className="h1-kaushik w-36 text-center playball-regular purple-to-pink">
                 Weeble
               </h1>
             </ThemeSwitcher>
@@ -55,7 +95,7 @@ function SignupForm() {
 
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className=" flex flex-col gap-3  dark:bg-[#0000006d] bg-[#ffffff8e] my-3 rounded-xl bg-opacity-5 md:bg-opacity-60 px-14 py-10 items-center size-72 md:size-auto justify-center"
+              className=" flex flex-col gap-3  dark:bg-[#000]/30 bg-[#ffffff]/50 backdrop-blur my-3 rounded-xl  px-14 py-10 items-center size-72 md:size-auto justify-center"
             >
               <FormField
                 control={form.control}
@@ -133,7 +173,7 @@ function SignupForm() {
                 type="submit"
                 className="bg-gradient-to-r from-indigo-500 via-pink-500 to-rose-500 text-[#feeaea] h-8 md:h-10 w-24 md:w-full"
               >
-                {isLoader ? <Loader /> : "Sign-up"}
+                {isCreatingUser ? <Loader /> : "Sign-up"}
               </Button>
             </form>
 
