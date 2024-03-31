@@ -1,10 +1,11 @@
+import TopBar from "@/components/shared/TopBar";
 
 function HomePage() {
   return (
     <>
-    <h1>THIS IS HOME</h1>
+      <TopBar />
     </>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

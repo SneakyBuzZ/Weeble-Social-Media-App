@@ -1,10 +1,11 @@
+import { Outlet } from "react-router-dom";
 
 function RootLayout() {
   return (
     <>
-    <h1>THIS IS ROOT LAYOUT</h1>
+      <Outlet />
     </>
-  )
+  );
 }
 
-export default RootLayout
+export default RootLayout;
