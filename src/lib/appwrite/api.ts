@@ -1,6 +1,7 @@
 import { INewUser } from "@/types";
 import { account, appwriteConfig, avatars, databases } from "./config";
 import { ID, Query } from "appwrite";
+import { get } from "http";
 
 export async function createUserAccount(user: INewUser) {
   try {
@@ -66,17 +67,30 @@ export async function signInAccount(user: { email: string; password: string }) {
   }
 }
 
-export async function getCurrentUser() {
+export async function getAccount() {
   try {
     const currentAccount = await account.get();
+    return currentAccount;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getCurrentUser() {
+  try {
+    const currentAccount = await getAccount();
+
+    let $id = "";
+    if (currentAccount?.$id != undefined) {
+      $id = currentAccount.$id;
+    }
 
     if (!currentAccount)
       console.log("APPWRITE :: API.TS :: FAILED TO GET USER");
 
     const currentUser = await databases.listDocuments(
       appwriteConfig.databaseId,
-      appwriteConfig.userCollectionId,
-      [Query.equal("accountId", currentAccount.$id)]
+      appwriteConfig.userCollectionId
     );
 
     if (!currentUser) console.log("APPWRITE :: API.TS :: NO CURRENT USER");
