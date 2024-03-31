@@ -25,7 +25,7 @@ function SigninForm() {
 
   const { checkAuthUser, isLoading: isUserLoading } = useAuthContext();
 
-  const { mutateAsync: signInAccount, isPending } = useSignInAccountMutation();
+  const { mutateAsync: signInAccount } = useSignInAccountMutation();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SigninValidation>>({
@@ -76,9 +76,9 @@ function SigninForm() {
 
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className=" flex flex-col gap-3  dark:bg-[#000]/30 bg-[#ffffff]/50 backdrop-blur my-3 rounded-xl  px-14 py-10 items-center size-72 md:size-auto justify-center"
+              className=" flex flex-col gap-3  dark:bg-[#ffffff40]/5 bg-[#ffffff]/40 backdrop-blur-md my-3 rounded-xl py-10  items-center size-64 md:size-auto md:w-80 justify-center pb-10 md:pb-20"
             >
-              <h1 className="small-regular text-gray-light w-72 md:w-96 text-center my-3">
+              <h1 className="small-regular dakr:text-gray-900 text-gray-500 w-72 md:w-96 text-center my-3">
                 Login to your account!
               </h1>
               <FormField
@@ -89,7 +89,7 @@ function SigninForm() {
                     <FormControl>
                       <Input
                         placeholder="email"
-                        className="bg-white dark:bg-opacity-5 opacity-60 border-none my-[2px] px-5 h-8 md:h-10 w-52 md:w-full"
+                        className="dark:bg-black/10 bg-white/50 border-none my-[2px] h-8 md:h-10 w-52 md:w-56"
                         type="email"
                         {...field}
                       />
@@ -107,7 +107,7 @@ function SigninForm() {
                     <FormControl>
                       <Input
                         placeholder="password"
-                        className="bg-white dark:bg-opacity-5 opacity-60 border-none my-[2px] px-5 h-8 md:h-10 w-52 md:w-full"
+                        className="dark:bg-black/10 bg-white/50 border-none my-[2px] h-8 md:h-10 w-52 md:w-56"
                         type="password"
                         {...field}
                       />
@@ -119,13 +119,13 @@ function SigninForm() {
 
               <Button
                 type="submit"
-                className="bg-gradient-to-r from-indigo-500 via-pink-500 to-rose-500 text-[#feeaea] h-8 md:h-10 w-24 md:w-full"
+                className="bg-gradient-to-r from-indigo-500 via-pink-500 to-rose-500 text-[#feeaea] h-8 md:h-10 w-52 md:w-56 mb-5 md:mb-0"
               >
-                {isUserLoading ? <Loader /> : "Sign-up"}
+                {isUserLoading ? <Loader /> : "Sign-in"}
               </Button>
             </form>
 
-            <h1 className="small-regular md:text-md text-gray-light">
+            <h1 className="small-regular md:text-md text-gray-light mt-4">
               {" "}
               ---- Don't have an account? ----
             </h1>
