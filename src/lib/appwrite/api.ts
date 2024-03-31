@@ -1,7 +1,6 @@
 import { INewUser } from "@/types";
 import { account, appwriteConfig, avatars, databases } from "./config";
-import { ID, Query } from "appwrite";
-import { get } from "http";
+import { ID } from "appwrite";
 
 export async function createUserAccount(user: INewUser) {
   try {
@@ -79,11 +78,6 @@ export async function getAccount() {
 export async function getCurrentUser() {
   try {
     const currentAccount = await getAccount();
-
-    let $id = "";
-    if (currentAccount?.$id != undefined) {
-      $id = currentAccount.$id;
-    }
 
     if (!currentAccount)
       console.log("APPWRITE :: API.TS :: FAILED TO GET USER");
