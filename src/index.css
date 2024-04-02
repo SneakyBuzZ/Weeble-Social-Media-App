@@ -20,7 +20,7 @@
 
 @layer utilities {
 
-  /* KAUSHIK STYLES  */
+  /* ========KAUSHIK STYLES===========  */
 
   /* gradient text purple to pink */
   .purple-to-pink {
@@ -32,8 +32,22 @@
   }
 
   .text-gray-dark {
-    @apply text-[#383838]
+    @apply text-[#383838];
   }
+
+  .weeble-bg {
+    @apply bg-[#0A0011];
+  }
+
+  .pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+
+
+  /* ========KAUSHIK STYLES===========  */
 
   /* TYPOGRAPHY */
   .h1-kaushik {
@@ -208,7 +222,7 @@
 
   /* Bottom bar */
   .bottom-bar {
-    @apply z-50 flex-between w-full sticky bottom-0 rounded-t-[20px] bg-dark-2 px-5 py-4 md:hidden;
+    @apply z-50 flex-between w-full sticky bottom-0 px-5 py-4 md:hidden;
   }
 
   /* File uploader */
@@ -239,7 +253,7 @@
 
   /* Left sidebar */
   .leftsidebar {
-    @apply hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px] bg-dark-2;
+    @apply hidden md:flex flex-col w-3/12;
   }
 
   .leftsidebar-link {
@@ -257,7 +271,7 @@
 
   /* Topbar */
   .topbar {
-    @apply sticky top-0 z-50 md:hidden bg-dark-2 w-full;
+    @apply sticky top-0 z-50 md:hidden w-full;
   }
 
   /* User card */
@@ -305,4 +319,9 @@
   font-family: "Playball", cursive;
   font-weight: 400;
   font-style: normal;
+}
+
+.dropShadow {
+  filter:
+    drop-shadow(-20px -5px 40px #d400ff) drop-shadow(30px 10px 50px #ff076a) drop-shadow(30px 10px 33px #659dff);
 }

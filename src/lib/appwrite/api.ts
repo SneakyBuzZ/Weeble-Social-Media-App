@@ -94,3 +94,12 @@ export async function getCurrentUser() {
     console.log("APPWRITE :: API.TS :: GETCURRENTUSER :: ", error);
   }
 }
+
+export async function signOutAccount() {
+  try {
+    const session = await account.deleteSession("current");
+    return session;
+  } catch (error) {
+    console.log("APPWRITE :: API.TS :: SIGNOUTACCOUNT :: ", error);
+  }
+}
