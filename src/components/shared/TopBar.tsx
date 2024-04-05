@@ -32,9 +32,11 @@ const TopBar = () => {
               onClick={() => signOutAccount()}
             />
           </Button>
-          <div className="">
-            <img src="profile.png" width={32} alt="profile" />
-          </div>
+          <Link to="/">
+            <div className="">
+              <img src="profile.png" width={32} alt="profile" />
+            </div>
+          </Link>
         </div>
       </div>
     </>

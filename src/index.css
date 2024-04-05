@@ -47,13 +47,17 @@ body {
   }
 
   .weeble-bg-button {
-    @apply bg-[#242424]
+    @apply bg-[#131313]
   }
 
   .pacifico-regular {
     font-family: "Pacifico", cursive;
     font-weight: 400;
     font-style: normal;
+  }
+
+  .profile_pic {
+    filter: drop-shadow(-30px 42px 67px rgba(255, 48, 165, 0.888)) drop-shadow(10px -27px 47px rgba(237, 170, 255, 0.882));
   }
 
 

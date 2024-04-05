@@ -82,7 +82,7 @@ function SignupForm() {
         <Form {...form}>
           <div className="flex-center flex-col item-center w-screen md:w-full">
             <ThemeSwitcher>
-              <h1 className="h1-kaushik w-36 text-center playball-regular purple-to-pink">
+              <h1 className="h1-kaushik w-50 text-center playball-regular purple-to-pink">
                 Weeble
               </h1>
             </ThemeSwitcher>
