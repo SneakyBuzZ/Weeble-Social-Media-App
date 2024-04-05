@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import { ThemeProvider } from "./contexts/themeContext";
 
 import { Toaster } from "@/components/ui/toaster";
+import ExplorePage from "./_root/pages/ExplorePage";
+import SavedPage from "./_root/pages/SavedPage";
+import PeoplePage from "./_root/pages/PeoplePage";
 
 function App() {
   const [theme, settheme] = useState("light");
@@ -35,6 +38,9 @@ function App() {
 
           <Route element={<RootLayout />}>
             <Route index element={<HomePage />} />
+            <Route path="/explore" element={<ExplorePage />} />
+            <Route path="saved" element={<SavedPage />} />
+            <Route path="people" element={<PeoplePage />} />
           </Route>
         </Routes>
         <Toaster />
