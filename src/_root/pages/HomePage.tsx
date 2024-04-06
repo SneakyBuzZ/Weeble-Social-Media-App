@@ -3,7 +3,6 @@ import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-  const navigate = useNavigate();
   return (
     <>
       <div className="w-full flex flex-col items-center py-2 md:py-10">
