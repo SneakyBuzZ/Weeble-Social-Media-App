@@ -39,8 +39,8 @@ function App() {
           <Route element={<RootLayout />}>
             <Route index element={<HomePage />} />
             <Route path="/explore" element={<ExplorePage />} />
-            <Route path="saved" element={<SavedPage />} />
-            <Route path="people" element={<PeoplePage />} />
+            <Route path="/saved" element={<SavedPage />} />
+            <Route path="/people" element={<PeoplePage />} />
           </Route>
         </Routes>
         <Toaster />

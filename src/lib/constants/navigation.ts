@@ -13,8 +13,8 @@ export const navItemsBottom = [
   },
   {
     id: 3,
-    label: "Addpost",
-    route: "/addpost",
+    label: "Create Post",
+    route: "/createpost",
     imageIcon: "/plus_icon.png",
   },
   {

@@ -11,6 +11,8 @@ function LeftSideBar() {
   const { mutate: signOutAccount, isSuccess } = useSignOutAccountMutation();
   const navigate = useNavigate();
   if (isSuccess) navigate("/sign-in");
+
+  const { user } = useAuthContext();
   return (
     <>
       <div className="leftsidebar flex flex-col text-white py-5">
@@ -21,7 +23,10 @@ function LeftSideBar() {
             width={60}
             alt="profile"
           />
-          <h1 className="text-md lg:text-lg">@sneaky_buzz</h1>
+          <h1 className="text-md lg:text-lg">{user.name}</h1>
+          <h1 className="text-xs lg:text-sm relative bottom-3 text-neutral-400">
+            {user.username}
+          </h1>
           <div className="flex justify-center items-center gap-4 text-center w-9/12 border-b border-neutral-800 pb-5">
             {profileStats.map((eachItem) => (
               <div className="flex flex-col justify-center">
@@ -40,7 +45,7 @@ function LeftSideBar() {
                 className={({ isActive }) =>
                   `${
                     isActive
-                      ? " text-purple-400 grayscale-0 weeble-bg-button"
+                      ? " text-purple-400 grayscale-0 "
                       : "hover:text-purple-300 "
                   }
                   flex items-center gap-4 w-full pl-3 xl:pl-7 grayscale text-pink-300 my-1 rounded-md py-1`
@@ -56,7 +61,7 @@ function LeftSideBar() {
         <div className="h-1/6  flex flex-col gap-1 justify-center items-center">
           <Button
             onClick={() => signOutAccount()}
-            className="transition ease-in-out delay-150 weeble-bg-button text-neutral-300 hover:text-white hover:bg-purple-500 duration-300 w-2/3"
+            className="transition ease-in-out delay-150 bg-[#8200A2] text-neutral-300 hover:text-white duration-300 w-2/3 "
           >
             {isUserLoading ? <Loader /> : null}
             <h1 className="text-[17px] ">Logout</h1>
