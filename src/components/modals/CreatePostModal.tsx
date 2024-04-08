@@ -1,32 +1,29 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
+import PostForm from "../form/PostForm";
 
 const CreatePostModal = ({ label }: { label: String }) => {
   return (
     <>
       <Dialog>
         <DialogTrigger>
-          <Button className="transition ease-in-out delay-150 bg-[#8200A2] text-neutral-300 hover:text-white duration-300">
+          <Button className="special-button-gradient transition ease-in-out delay-150 text-neutral-300 hover:text-white duration-300 w-full ">
             {label}
           </Button>
         </DialogTrigger>
-        <DialogContent className=" bg-purple-200">
+        <DialogContent className="bg-[#2a2a2a] border-none   overflow-y-auto rounded-lg w-4/5">
           <DialogHeader>
-            <DialogTitle className="text-white">
-              Are you absolutely sure?
+            <DialogTitle className="text-white w-full text-center ">
+              Create Post
             </DialogTitle>
-            <DialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </DialogDescription>
           </DialogHeader>
+          <PostForm />
         </DialogContent>
       </Dialog>
     </>
