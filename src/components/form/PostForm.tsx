@@ -16,12 +16,20 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
 import FileUploader from "./FileUploader";
 import { Models } from "appwrite";
+import { createPost } from "@/lib/appwrite/api";
+import { useAuthContext } from "@/contexts/AuthContext";
+import { useToast } from "../ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 type PostFormProps = {
   post?: Models.Document;
 };
 
 const PostForm = ({ post }: PostFormProps) => {
+  const { user } = useAuthContext();
+  const { toast } = useToast();
+  const navigate = useNavigate();
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof CreatePostValidation>>({
     resolver: zodResolver(CreatePostValidation),
@@ -34,10 +42,17 @@ const PostForm = ({ post }: PostFormProps) => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof CreatePostValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof CreatePostValidation>) {
+    const newPost = await createPost({
+      ...values,
+      userId: user.id,
+    });
+
+    if (!newPost) {
+      toast({ title: "Please try again." });
+    }
+
+    navigate("/");
   }
 
   return (

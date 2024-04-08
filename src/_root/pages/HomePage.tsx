@@ -18,11 +18,16 @@ function HomePage() {
             className="weeble-bg-button border-none"
             placeholder="Search"
           />
-
           <CreatePostModal label={"Create Post"} />
         </div>
         <div className="flex flex-col justify-center items-center">
-          {isPostLoading ? <Loader /> : <ul className="text-white"></ul>}
+          {isPostLoading ? (
+            <Loader />
+          ) : (
+            <ul className="text-white">
+              <h1>THERE ARE</h1>
+            </ul>
+          )}
         </div>
       </div>
     </>

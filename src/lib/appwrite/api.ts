@@ -106,6 +106,7 @@ export async function signOutAccount() {
 
 export async function uploadFile(file: File) {
   try {
+    console.log("FILE INSIDE UPLOAD FILE : ", file);
     const uploadedFile = await storage.createFile(
       appwriteConfig.storageId,
       ID.unique(),
