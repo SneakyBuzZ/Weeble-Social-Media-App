@@ -21,6 +21,6 @@ app.use(cookieParser())
 import userRouter from "./routes/user.route.js";
 
 //=============================== ROUTES DECLARATION
-app.use("/api/v1/users/", userRouter)
+app.use("/weeble/users", userRouter)
 
 export { app }

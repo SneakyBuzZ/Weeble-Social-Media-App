@@ -1,1 +1,1 @@
-export const DB_NAME = 'vortex'
+export const DB_NAME = 'weeble'
