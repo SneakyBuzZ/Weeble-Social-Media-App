@@ -28,19 +28,13 @@ const userSchema = new mongoose.Schema({
         trim: true,
         index: true
     },
+    bio: {
+        type: String,
+    },
     avatar: {
         type: String,
         required: true,
     },
-    coverImage: {
-        type: String,
-    },
-    watchHistory: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Video'
-        }
-    ],
     refreshToken: {
         type: String
     }
