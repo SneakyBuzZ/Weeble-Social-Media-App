@@ -14,18 +14,17 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "@/components/shared/Loader";
-import ThemeSwitcher from "@/components/shared/ThemeSwitcher";
 
 import { useToast } from "@/components/ui/use-toast";
-import { useSignInAccountMutation } from "@/lib/react-query/queriesAndMutations";
-import { useAuthContext } from "@/contexts/AuthContext";
+// import { useSignInAccountMutation } from "@/lib/react-query/queriesAndMutations";
+// import { useAuthContext } from "@/contexts/AuthContext";
 
 function SigninForm() {
   const navigate = useNavigate();
 
-  const { checkAuthUser, isLoading: isUserLoading } = useAuthContext();
+  // const { checkAuthUser, isLoading: isUserLoading } = useAuthContext();
 
-  const { mutateAsync: signInAccount } = useSignInAccountMutation();
+  // const { mutateAsync: signInAccount } = useSignInAccountMutation();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SigninValidation>>({
@@ -40,23 +39,24 @@ function SigninForm() {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SigninValidation>) {
-    const session = await signInAccount({
-      email: values.email,
-      password: values.password,
-    });
-    if (!session) {
-      return toast({ title: "Sign-in failed! Please try again." });
-    }
+    // const session = await signInAccount({
+    //   email: values.email,
+    //   password: values.password,
+    // });
+    // if (!session) {
+    //   return toast({ title: "Sign-in failed! Please try again." });
+    // }
 
-    const isLoggedIn = await checkAuthUser();
+    // const isLoggedIn = await checkAuthUser();
 
-    if (isLoggedIn) {
-      form.reset();
+    // if (isLoggedIn) {
+    //   form.reset();
 
-      navigate("/");
-    } else {
-      return toast({ title: "User has not logged-in" });
-    }
+    //   navigate("/");
+    // } else {
+    //   return toast({ title: "User has not logged-in" });
+    // }
+    if (values) null;
   }
 
   return (
@@ -64,11 +64,9 @@ function SigninForm() {
       <div className="form size-full flex justify-center items-center">
         <Form {...form}>
           <div className="flex-center flex-col item-center w-screen md:w-full">
-            <ThemeSwitcher>
-              <h1 className="h1-kaushik w-50 text-center playball-regular purple-to-pink">
-                Weeble
-              </h1>
-            </ThemeSwitcher>
+            <h1 className="h1-kaushik w-50 text-center playball-regular purple-to-pink">
+              Weeble
+            </h1>
 
             <h1 className="small-regular text-gray-light w-72 md:w-96 text-center my-3">
               Welcome back! Enter your details.
@@ -121,7 +119,7 @@ function SigninForm() {
                 type="submit"
                 className="bg-gradient-to-r from-indigo-500 via-pink-500 to-rose-500 text-[#feeaea] h-8 md:h-10 w-52 md:w-56 mb-5 md:mb-0"
               >
-                {isUserLoading ? <Loader /> : "Sign-in"}
+                {/* {isUserLoading ? <Loader /> : "Sign-in"} */}
               </Button>
             </form>
 

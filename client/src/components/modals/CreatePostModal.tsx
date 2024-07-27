@@ -6,7 +6,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
-import PostForm from "../form/PostForm";
 
 const CreatePostModal = ({ label }: { label: String }) => {
   return (
@@ -23,7 +22,6 @@ const CreatePostModal = ({ label }: { label: String }) => {
               Create Post
             </DialogTitle>
           </DialogHeader>
-          <PostForm />
         </DialogContent>
       </Dialog>
     </>

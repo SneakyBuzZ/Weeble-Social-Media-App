@@ -1,15 +1,8 @@
 import CreatePostModal from "@/components/modals/CreatePostModal";
-import Loader from "@/components/shared/Loader";
+// import Loader from "@/components/shared/Loader";
 import { Input } from "@/components/ui/input";
-import { useGetRecentPostsMutation } from "@/lib/react-query/queriesAndMutations";
-import { Models } from "appwrite";
 
 function HomePage() {
-  const {
-    data: posts,
-    isPending: isPostLoading,
-    isError: isErrorPosts,
-  } = useGetRecentPostsMutation();
   return (
     <>
       <div className="w-full flex flex-col items-center py-2 md:py-10">
@@ -21,13 +14,13 @@ function HomePage() {
           <CreatePostModal label={"Create Post"} />
         </div>
         <div className="flex flex-col justify-center items-center">
-          {isPostLoading ? (
+          {/* {isPostLoading ? (
             <Loader />
           ) : (
             <ul className="text-white">
               <h1>THERE ARE</h1>
             </ul>
-          )}
+          )} */}
         </div>
       </div>
     </>

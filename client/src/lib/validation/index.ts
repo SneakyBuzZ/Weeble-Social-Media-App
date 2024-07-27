@@ -20,7 +20,7 @@ export const SigninValidation = z.object({
 
 export const CreatePostValidation = z.object({
   caption: z.string().min(6).max(2200),
-  file: z.custom<File[]>(),
+  imageUrl: z.custom<File[]>(),
   location: z.string(),
   tags: z.string(),
 });

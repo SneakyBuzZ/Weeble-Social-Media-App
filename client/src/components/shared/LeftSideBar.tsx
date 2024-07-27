@@ -1,18 +1,17 @@
 import { navItems } from "@/lib/constants/navigation";
 import { Button } from "../ui/button";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { profileStats } from "@/lib/constants/profileStats";
-import { useSignOutAccountMutation } from "@/lib/react-query/queriesAndMutations";
-import Loader from "./Loader";
-import { useAuthContext } from "@/contexts/AuthContext";
+// import { useSignOutAccountMutation } from "@/lib/react-query/queriesAndMutations";
+// import Loader from "./Loader";
 
 function LeftSideBar() {
-  const { isLoading: isUserLoading } = useAuthContext();
-  const { mutate: signOutAccount, isSuccess } = useSignOutAccountMutation();
-  const navigate = useNavigate();
-  if (isSuccess) navigate("/sign-in");
+  // const { isLoading: isUserLoading } = useAuthContext();
+  // const { mutate: signOutAccount, isSuccess } = useSignOutAccountMutation();
+  // const navigate = useNavigate();
+  // if (isSuccess) navigate("/sign-in");
 
-  const { user } = useAuthContext();
+  // const { user } = useAuthContext();
   return (
     <>
       <div className="leftsidebar flex flex-col text-white py-5">
@@ -23,9 +22,9 @@ function LeftSideBar() {
             width={60}
             alt="profile"
           />
-          <h1 className="text-md lg:text-lg">{user.name}</h1>
+          <h1 className="text-md lg:text-lg">hi</h1>
           <h1 className="text-xs lg:text-sm relative bottom-3 text-neutral-400">
-            {user.username}
+            hello
           </h1>
           <div className="flex justify-center items-center gap-4 text-center w-9/12 border-b border-neutral-800 pb-5">
             {profileStats.map((eachItem) => (
@@ -59,11 +58,8 @@ function LeftSideBar() {
         </div>
 
         <div className="h-1/6  flex flex-col gap-1 justify-center items-center">
-          <Button
-            onClick={() => signOutAccount()}
-            className="transition ease-in-out delay-150 weeble-bg-button text-neutral-300 hover:text-white duration-300 w-2/3 "
-          >
-            {isUserLoading ? <Loader /> : null}
+          <Button className="transition ease-in-out delay-150 weeble-bg-button text-neutral-300 hover:text-white duration-300 w-2/3 ">
+            {/* {isUserLoading ? <Loader /> : null} */}
             <h1 className="text-[17px] ">Logout</h1>
           </Button>
 

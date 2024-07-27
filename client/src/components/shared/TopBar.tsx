@@ -1,12 +1,8 @@
-import { useSignOutAccountMutation } from "@/lib/react-query/queriesAndMutations";
 import { Button } from "../ui/button";
 import { LogOut } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
-  const { mutate: signOutAccount, isSuccess } = useSignOutAccountMutation();
-  const navigate = useNavigate();
-  if (isSuccess) navigate(0);
   return (
     <>
       <div className="topbar flex justify-between px-5 py-3">
@@ -29,7 +25,6 @@ const TopBar = () => {
               width={17}
               color="#FF90B8"
               className=" rotate-180"
-              onClick={() => signOutAccount()}
             />
           </Button>
           <Link to="/">
