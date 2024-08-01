@@ -1,41 +1,35 @@
-// import { Request, Response } from 'express';
-// import { ApiError } from '../utils/ApiError';
-// import { db } from '../utils/db';
-// import { ApiResponse } from '../utils/ApiResponse';
+import { Request, Response } from 'express';
+import { ApiError } from '../utils/ApiError';
+import { db } from '../utils/db';
+import { ApiResponse } from '../utils/ApiResponse';
 
-// export const createPost = async (req: Request, res: Response) => {
-//     const { postImage, postTitle, postDescription, ownerId, groupId } =
-//         req.body;
-
-//     [postImage, , postTitle, postDescription, ownerId, groupId].some((each) => {
-//         if (!each) {
-//             throw new ApiError(
-//                 400,
-//                 'CREATE POST : POST CONTROLLER : All fields are required'
-//             );
-//         }
-//     });
-
-//     const newPost = await db.post.create({
-//         data: {
-//             postTitle,
-//             postDescription,
-//             postImage,
-//             ownerId,
-//             groupId,
-//         },
-//     });
-
-//     if (!newPost) {
-//         return res
-//             .status(500)
-//             .json(new ApiResponse(500, {}, 'Failed to create post'));
-//     }
-
-//     return res
-//         .status(200)
-//         .json(new ApiResponse(200, newPost, 'Successfuly created post'));
-// };
+export const createPost = async (req: Request, res: Response) => {
+    // [postImage, , postTitle, postDescription, ownerId, groupId].some((each) => {
+    //     if (!each) {
+    //         throw new ApiError(
+    //             400,
+    //             'CREATE POST : POST CONTROLLER : All fields are required'
+    //         );
+    //     }
+    // });
+    // const newPost = await db.post.create({
+    //     data: {
+    //         postTitle,
+    //         postDescription,
+    //         postImage,
+    //         ownerId,
+    //         groupId,
+    //     },
+    // });
+    // if (!newPost) {
+    //     return res
+    //         .status(500)
+    //         .json(new ApiResponse(500, {}, 'Failed to create post'));
+    // }
+    // return res
+    //     .status(200)
+    //     .json(new ApiResponse(200, newPost, 'Successfuly created post'));
+};
 
 // export const deletePost = async (req: Request, res: Response) => {
 //     const { postId } = req.params;

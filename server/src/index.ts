@@ -4,6 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import { userRouter } from './routes/user.route';
+import { s3Router } from './routes/amazon.s3.route';
 
 dotenv.config({
     path: '../.env',
@@ -34,6 +35,7 @@ app.use(cookieParser());
 //############## ROUTES #####################
 
 app.use('/weeble/api/user', userRouter);
+app.use('/weeble/api/s3', s3Router);
 
 app.get('/', (req: Request, res: Response) => {
     res.send('WORKING');
